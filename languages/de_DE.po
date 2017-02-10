@@ -1,0 +1,24 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: de_DE\n"
+"X-Generator: Poedit 1.8.11\n"
+
+msgid "Seite nicht gefunden"
+msgstr "Seite nicht gefunden"
+
+msgid "Wir konnten die gewünschte Seite nicht finden."
+msgstr "Wir konnten die gewünschte Seite nicht finden."
+
+msgid "Wir entschuldigen uns für die dadurch entstandenen Unannehmlichkeiten."
+msgstr "Wir entschuldigen uns für die dadurch entstandenen Unannehmlichkeiten."
+
+msgid "Zur Startseite"
+msgstr "Zur Startseite"

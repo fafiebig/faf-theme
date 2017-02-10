@@ -1,0 +1,17 @@
+
+<ul class="nav navbar-nav {{ class }}">
+    {% for item in items %}
+        <li class="{% if slug == item.slug %}active{% endif %} {% if item.get_children %}dropdown{% endif %}">
+            {% if item.get_children %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ item.title }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {% for child in item.get_children %}
+                        <li class=""><a href="{{ child.link }}">{{ child.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <a href="{{ item.link }}">{{ item.title }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

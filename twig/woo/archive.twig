@@ -1,0 +1,26 @@
+{% extends "twig/base.twig" %}
+
+{% block content %}
+    <main class="b-shop" role="main">
+        {% do action('woocommerce_before_main_content') %}
+
+        <div class="before-shop-loop row">
+            <div class="columns">
+                {% do action( 'woocommerce_before_shop_loop') %}
+            </div>
+        </div>
+
+        <div class="loop row">
+            {% for post in products %}
+
+                <div class="columns large-4 medium-6">
+                    {% include ["twig/woo/teaser.twig"] %}
+                </div>
+
+            {% endfor %}
+        </div>
+
+        {% do action('woocommerce_after_shop_loop') %}
+        {% do action('woocommerce_after_main_content') %}
+    </main>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "twig/base.twig" %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <article class="single-post home">
+            <h1 class="post-title">{{ post.title }}</h1>
+
+            {% if post.thumbnail %}
+                <img src="{{ post.thumbnail.src }}"/>
+            {% endif %}
+
+            <div class="post-content">{{ post.content }}</div>
+        </article>
+    {% endfor %}
+
+{% endblock %}

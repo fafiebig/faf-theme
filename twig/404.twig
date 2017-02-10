@@ -1,0 +1,15 @@
+{% extends "twig/base.twig" %}
+
+{% block content %}
+
+    <article class="error">
+        <h1 class="title">{{ __('Seite nicht gefunden', 'faf-theme') }}</h1>
+
+        <div class="content">
+            {{ __('Wir konnten die gewünschte Seite nicht finden.', 'faf-theme') }}
+            {{ __('Wir entschuldigen uns für die dadurch entstandenen Unannehmlichkeiten.', 'faf-theme') }}
+            <a href="{{ function('get_home_url') }}/" title="{{ __('Zur Startseite', 'faf-theme') }}">{{ __('Zur Startseite', 'faf-theme') }}</a>.
+        </div>
+    </article>
+
+{% endblock %}

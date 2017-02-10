@@ -1,0 +1,9 @@
+
+#wpbody-content iframe {
+    width: 99%;
+}
+
+#wpbody-content #dashboard-widgets #postbox-container-1,
+#dashboard-widgets .postbox-container {
+    width: 100%;
+}

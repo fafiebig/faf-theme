@@ -1,0 +1,12 @@
+
+<ul class="b-pagination">
+    {% for item in items %}
+        <li class="{{ item.class }} {{ item.active }}">
+            {% if item.link %}
+                <a href="{{ item.link }}" title="{{ item.title }}">{{ item.text }}</a>
+            {% else %}
+                {{ item.text }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

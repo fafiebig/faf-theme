@@ -1,0 +1,67 @@
+{% do action( 'woocommerce_before_cart' ) %}
+
+<form action="{{ fn('wc_get_cart_url') }}" method="post">
+
+    {% do action( 'woocommerce_before_cart_table' ) %}
+
+    <table class="shop_table shop_table_responsive cart" cellspacing="0">
+        <thead>
+        <tr>
+            <th class="product-thumbnail">&nbsp;</th>
+            <th class="product-name">{{ fn('_e', 'Product', 'woocommerce') }}</th>
+            <th class="product-quantity">{{ fn('_e', 'Quantity', 'woocommerce' ) }}</th>
+            <th class="product-subtotal">{{ fn('_e', 'Total', 'woocommerce' ) }}</th>
+            <th class="product-remove">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for key,item in cart.get_cart %}
+            <tr>
+                {% set prod     = item.data %}
+                {% set image    = fn('getWooProductImage', prod.post) %}
+
+                <td>
+                    <a href="{{ prod.get_permalink( item ) }}" title="{{ prod.get_title }}">
+                        <img class="product-image" src="{{ image.src }}" width="100px" alt=""/>
+                    </a>
+                </td>
+                <td>
+                    {{ prod.get_title }}
+                </td>
+                <td>
+                    {{ item.quantity }}
+                </td>
+                <td>
+                    {{ item.line_total + item.line_tax|round(2, 'ceil') }}
+                </td>
+                <td>
+                    {% set url = fn('esc_url', cart.get_remove_url( key )) %}
+                    <a href="{{ url }}" class="remove" title="{{ fn('__', 'Remove this item', 'woocommerce') }}"
+                       data-product_id="{{ prod.id }}" data-product_sku="{{ prod.get_sku }}">&times;</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        {% do action( 'woocommerce_cart_contents' ) %}
+
+        <tr>
+            <td colspan="6" class="actions">
+                {% do action( 'woocommerce_cart_actions' ) %}
+            </td>
+        </tr>
+
+        {% do action( 'woocommerce_after_cart_contents' ) %}
+
+        </tbody>
+    </table>
+
+    {% do action( 'woocommerce_after_cart_table' ) %}
+
+</form>
+
+<div class="cart-collaterals">
+    {% do action( 'woocommerce_cart_collaterals' ) %}
+</div>
+
+{% do action( 'woocommerce_after_cart' ) %}

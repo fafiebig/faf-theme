@@ -1,0 +1,72 @@
+
+<div class="b-searchbar shortcode">
+    <form class="form" method="get">
+
+        {% if categories %}
+            <div class="option search-category">
+                <label class="label">{{ fn('__', 'Kategorie') }}</label>
+                <select class="select-box" name="category">
+                    <option value="">{{  fn('__', 'Kategorie') }}</option>
+                    {% for category in categories %}
+                        <option value="{{ category.slug }}" {% if category.slug == current_category %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        {% if tags %}
+            <div class="option search-tag">
+                <label class="label">{{ fn('__', 'Schlüsselwort') }}</label>
+                <select class="select-box" name="tag">
+                    <option value="">{{ fn('__', 'Schlüsselwort') }}</option>
+                    {% for tag in tags %}
+                        <option value="{{ tag.slug }}" {% if tag.slug == current_tag %}selected{% endif %}>{{ tag.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        {% if param.date %}
+            <div class="option search-date">
+                <label class="label">{{  fn('__', 'Datum (von - bis)') }}</label>
+                <input class="picker-input datePicker" type="text" name="from" placeholder="{{  fn('__', 'Datum (von)') }}" value="{{ current_from }}"/>
+                <input class="picker-input datePicker" type="text" name="to" placeholder="{{ fn('__', 'Datum (bis)') }}" value="{{ current_to }}"/>
+            </div>
+        {% endif %}
+
+        <div class="option search-form">
+            <label class="label">{{ fn('__', 'Suchwort') }}</label>
+            <input class="search-input" type="text" name="search" placeholder="{{ fn('__', 'Suchen') }}" value="{{ search }}"/>
+            <input type="hidden" name="pg" value="1"/>
+        </div>
+
+        {% if posts %}
+
+            {{ pagination }}
+
+            <ul class="b-searchresults">
+                {% for post in posts %}
+                <li class="result">
+                    <a class="result-link" href="{{ fn('get_permalink', post) }}" title="{{  fn('__', 'Zum Beitrag') }}">
+                        <div class="text-wrapper">
+                            <h3 class="result-title">{{ post.post_title|apply_filters('the_title') }}</h3>
+                            <span class="result-excerpt">{{ post.post_excerpt|apply_filters('the_excerpt') }}</span>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {{ pagination }}
+
+        {% else %}
+            <div class="b-searchresults">
+                <p class="b-hint">{{ fn('__', 'Keine Ergebnisse') }}</p>
+            </div>
+        {% endif %}
+
+        <input class="button submit-search" type="submit" name="submit" value="{{ fn('__', 'Suchen') }}"/>
+    </form>
+
+
+</div>

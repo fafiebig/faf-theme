@@ -1,0 +1,23 @@
+<article {{ fn('post_class', ['product'] ) }}>
+
+    {{ fn('timber_set_product', post) }}
+
+    {% set prod     = fn('wc_get_product', post.id) %}
+    {% set image    = fn('getWooProductImage', post) %}
+
+    <div class="b-product-teaser">
+
+        <a href="{{ post.link }}"><img class="product-image" src="{{ image.src }}" alt="{{ post.title }}"/></a>
+
+        <div class="product-summary">
+            {% do action('woocommerce_before_shop_loop_item_title') %}
+
+            <h3 class="product-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
+
+            {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+            {% do action( 'woocommerce_after_shop_loop_item' ) %}
+        </div>
+
+    </div>
+
+</article>

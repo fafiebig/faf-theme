@@ -1,0 +1,19 @@
+{% extends "twig/base.twig" %}
+
+{% block content %}
+
+    {% for post in posts %}
+
+        {% if post.thumbnail %}
+            <div class="bg" style="background: url({{ post.thumbnail.src('large') }}) no-repeat center center fixed;"></div>
+        {% endif %}
+
+        <article class="page">
+            <h1 class="title">{{ post.title }}</h1>
+
+            <div class="content">{{ post.content }}</div>
+
+        </article>
+    {% endfor %}
+
+{% endblock %}
