@@ -1,6 +1,6 @@
 # faf-theme
 
-Wordpress theme based on bootstrap 3.
+Wordpress theme based on bootstrap 3 and twig (needs Timber plugin).
 
 # Installation
 
