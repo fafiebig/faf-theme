@@ -1,3 +1,6 @@
+# DEPRECATED - DO NOT USE IT ANY LONGER!
+
+
 # faf-theme
 
 Wordpress theme based on bootstrap 3 and twig (needs Timber plugin).
